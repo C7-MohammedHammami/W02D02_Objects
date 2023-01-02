@@ -299,3 +299,163 @@ const keyInObject = function (object, key) {
   };
   
 //Advanced
+//Q1
+
+// JOHN >>jane,bill
+//bill >> Mark,Sarah,Samuel
+//Sarah >> Smith,Stan
+const family = {
+    name: "John",
+    children: [
+      {
+        name: "Bill",
+        children: [
+          {
+            name: "Mark",
+            children: [], //delet
+          },
+          {
+            name: "Sarah",
+            children: [
+              {
+                name: "Smith",
+                children: [], //delet
+              },
+              {
+                name: "Stan",
+                children: [],//delet
+              },
+            ],
+          },
+          {
+            name: "Samuel",
+            children: [],
+          },
+        ],
+      },
+      {
+        name: "Jane",
+        children: [],//delet
+      },
+    ],
+  };
+  console.log(family.children[0].children[1].children)
+  console.log(family.children[0].children[2].children)
+
+// add children to Samuel
+  family.children[0].children[2].children=[
+    {name: "Marry ",
+    children: [],},
+    {name: "Gwen",
+    children: [],},
+  ]
+
+
+  //Delete the children property from the people who don't have children.
+
+  delete family.children[0].children[2].children[0].children
+  delete family.children[0].children[2].children[1].children
+  delete family.children[0].children[0].children
+  delete family.children[0].children[1].children[0].children
+  delete family.children[0].children[1].children[1].children
+  delete family.children[1].children
+
+
+  //Q2
+  /*
+  1-Write a factory function createIceCream that accepts Three arguments, coneType, flavour, and topping
+  2-
+  */
+  const createIceCream = function (coneType, iceCreamFlavour, topping) {
+    return {
+        coneType:coneType,
+        iceCreamFlavour:iceCreamFlavour,
+        topping:topping,
+    }
+  };
+  
+
+  //Q3
+  const employeeOne = {
+    id: 0,
+    name: "John",
+    position: "",
+  };
+  
+  const employeeTwo = {
+    id: 1,
+    name: "Jane",
+    position: "Developer",
+  };
+  
+  if (employeeOne.id) {// = 0 >>false
+    console.log(employeeOne.name);
+  }
+  
+  if (employeeTwo.id) {// = 1 >> true
+    console.log(employeeOne.name);//>>print name on console
+  }
+  
+  if (employeeOne.position) {// = null or false becuse string empty
+    console.log(employeeOne.name);
+  }
+  
+  if (employeeTwo.position) {//true becuse string not empty
+    console.log(employeeOne.name);
+  }
+  
+  if (employeeOne.salary) { // undfiend false
+    console.log(employeeOne.name);
+  }
+
+
+  //Q4
+  /*
+  1-Write a function isValidUser that accepts an object representing login information and
+  2-if the user is valid return true
+  3-if the user is otherwise  return false
+  */
+  const users = {
+    mrpotato: {
+      email: "mr.potato@gmail.com",
+      password: "LonelyPotato",
+    },
+    thewiseman: {
+      email: "wiseMan9999@gmail.com",
+      password: "12345678",
+    },
+  };
+  
+  const isValidUser = function (loginInfo) {
+    // TODO: Your code here
+    if( loginInfo.email.length>=6 && loginInfo.password.length>=8 && (loginInfo.user === user.mrpotato || loginInfo.user === user.thewiseman) ){
+
+    }
+  };
+  
+  isValidUser({
+    username: "MrPotato",
+    email: "mr.potato@gmail.com",
+    password: "LonelyPotato",
+  }); // => true
+  
+  isValidUser({
+    username: "MrPotato",
+    email: "mr.potato@gmail.com",
+    password: "Lonely",
+  }); // => false
+  
+  isValidUser({
+    username: "MrPotato",
+    email: "mr.potato.gmail.com",
+    password: "LonelyPotato",
+  }); // => false
+  
+ // things to validate:
+// 1- length of the email is greater than or equal to 6 // done
+
+// 2- length of the password is greater than or equal to 8 // done
+// 3- email contains `@` and `.com`
+// 4- the user must be in the users object // done
+// 5- both of the passwords match
+// 6- when you compare information make sure to reference the users object and access the value form there
