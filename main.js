@@ -415,6 +415,7 @@ const family = {
   2-if the user is valid return true
   3-if the user is otherwise  return false
   */
+ 
   const users = {
     mrpotato: {
       email: "mr.potato@gmail.com",
@@ -428,8 +429,19 @@ const family = {
   
   const isValidUser = function (loginInfo) {
     // TODO: Your code here
-    if( loginInfo.email.length>=6 && loginInfo.password.length>=8 && (loginInfo.user === user.mrpotato || loginInfo.user === user.thewiseman) ){
+    if(users[loginInfo.username]){
+      if(users[loginInfo.username][password] === loginInfo.password){
+        if(loginInfo.password >=8  && loginInfo.email >= 6){
+          return true
+        }else{
+          return false
+        }
 
+      }else{
+        return false
+      }
+    }else{
+      return false
     }
   };
   
@@ -452,10 +464,26 @@ const family = {
   }); // => false
   
  // things to validate:
-// 1- length of the email is greater than or equal to 6 // done
-
-// 2- length of the password is greater than or equal to 8 // done
+// 1- length of the email is greater than or equal to 6 // 
+// 2- length of the password is greater than or equal to 8 
 // 3- email contains `@` and `.com`
 // 4- the user must be in the users object // done
-// 5- both of the passwords match
+// 5- both of the passwords match // done
 // 6- when you compare information make sure to reference the users object and access the value form there
+
+
+
+
+
+//Q5
+const compareKeys = function (objectOne, objectTwo) {
+  // TODO: Your code here
+  let a = Object.keys(objectOne)
+  let b = Object.keys(objectTwo)
+  a = a.join()
+  b = b.join()
+  if(a === b){
+    return true
+  }
+  return false
+};
